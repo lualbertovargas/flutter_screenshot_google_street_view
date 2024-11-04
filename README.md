@@ -1,39 +1,74 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Screenshot Google Street View
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Este paquete permite capturar y mostrar imágenes de Google Street View en aplicaciones Flutter.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Captura de imágenes de Street View.
+- Visualización de imágenes capturadas.
+- Personalización de la configuración de captura.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Para comenzar a usar este paquete, asegúrate de tener una clave de API de Google Maps habilitada para el servicio de Street View.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Aquí tienes un ejemplo de cómo usar los widgets `StreetViewCapture` y `StreetViewPreview`:
 
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_screenshot_google_street_view/flutter_screenshot_google_street_view.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Street View Example')),
+        body: StreetViewExample(),
+      ),
+    );
+  }
+}
+
+class StreetViewExample extends StatefulWidget {
+  @override
+  _StreetViewExampleState createState() => _StreetViewExampleState();
+}
+
+class _StreetViewExampleState extends State<StreetViewExample> {
+  String? _imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        StreetViewCapture(
+          initialPosition: LatLng(37.7749, -122.4194), // San Francisco
+          config: StreetViewConfig(apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'),
+          onImageCaptured: (imageUrl, position) {
+            setState(() {
+              _imageUrl = imageUrl;
+            });
+          },
+        ),
+        if (_imageUrl != null)
+          StreetViewPreview(
+            imageUrl: _imageUrl!,
+            fit: BoxFit.cover,
+          ),
+      ],
+    );
+  }
+}
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Para más información sobre cómo contribuir al paquete o reportar problemas, visita el repositorio del proyecto.

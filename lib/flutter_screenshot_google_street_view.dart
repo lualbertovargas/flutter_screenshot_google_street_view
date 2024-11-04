@@ -1,7 +1,5 @@
-library flutter_screenshot_google_street_view;
+library flutter_street_view_capture;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/models/street_view_config.model.dart';
+export 'src/widgets/street_view_capture.widget.dart';
+export 'src/widgets/street_view_preview.widget.dart';
