@@ -257,13 +257,13 @@
       "name": "flutter_screenshot_google_street_view",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-11-04T00:12:40.066010Z",
+  "generated": "2025-01-01T04:28:25.750516Z",
   "generator": "pub",
-  "generatorVersion": "3.5.3",
+  "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/lualbertovargas/development/flutter",
-  "flutterVersion": "3.24.3",
+  "flutterVersion": "3.24.4",
   "pubCache": "file:///Users/lualbertovargas/.pub-cache"
 }

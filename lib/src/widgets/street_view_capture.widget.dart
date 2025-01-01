@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/street_view_config.model.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as maps;
-import 'package:flutter_google_street_view/flutter_google_street_view.dart' as street_view;
+import 'package:flutter_google_street_view/flutter_google_street_view.dart'
+    as street_view;
 
 /// A widget that displays Street View and allows capturing screenshots
 class StreetViewCapture extends StatefulWidget {
@@ -23,6 +24,9 @@ class StreetViewCapture extends StatefulWidget {
   /// Enable/disable zoom gestures
   final bool zoomGesturesEnabled;
 
+  /// Height of the widget
+  final double height;
+
   const StreetViewCapture({
     Key? key,
     required this.initialPosition,
@@ -31,6 +35,7 @@ class StreetViewCapture extends StatefulWidget {
     this.customCaptureButton,
     this.initialBearing = 30,
     this.zoomGesturesEnabled = false,
+    this.height = 400,
   }) : super(key: key);
 
   @override
@@ -42,21 +47,24 @@ class _StreetViewCaptureState extends State<StreetViewCapture> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: street_view.FlutterGoogleStreetView(
-            initPos: widget.initialPosition,
-            initSource: street_view.StreetViewSource.outdoor,
-            initBearing: widget.initialBearing,
-            zoomGesturesEnabled: widget.zoomGesturesEnabled,
-            onStreetViewCreated: (controller) {
-              _controller = controller;
-            },
+    return SizedBox(
+      height: widget.height,
+      child: Column(
+        children: [
+          Expanded(
+            child: street_view.FlutterGoogleStreetView(
+              initPos: widget.initialPosition,
+              initSource: street_view.StreetViewSource.outdoor,
+              initBearing: widget.initialBearing,
+              zoomGesturesEnabled: widget.zoomGesturesEnabled,
+              onStreetViewCreated: (controller) {
+                _controller = controller;
+              },
+            ),
           ),
-        ),
-        widget.customCaptureButton ?? _defaultCaptureButton(),
-      ],
+          widget.customCaptureButton ?? _defaultCaptureButton(),
+        ],
+      ),
     );
   }
 
@@ -80,7 +88,7 @@ class _StreetViewCaptureState extends State<StreetViewCapture> {
       final position = panoramaLocation?.position;
 
       if (position != null) {
-        // Convertir de street_view.LatLng a maps.LatLng
+        // Convert from street_view.LatLng to maps.LatLng
         final mapsPosition = maps.LatLng(
           position.latitude,
           position.longitude,

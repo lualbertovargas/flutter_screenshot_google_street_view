@@ -1,20 +1,59 @@
 # Flutter Screenshot Google Street View
 
-Este paquete permite capturar y mostrar imágenes de Google Street View en aplicaciones Flutter.
+<p align="center">
+  <img src="https://i.imgur.com/q7XWtUp.gif" width="150" height="300"/>
+</p>
+
+## Important Note
+
+For accurate testing and functionality validation, it is essential to test this package on a physical device rather than an emulator.
+
+This package allows capturing and displaying Google Street View images in Flutter applications.
 
 ## Features
 
-- Captura de imágenes de Street View.
-- Visualización de imágenes capturadas.
-- Personalización de la configuración de captura.
+- Street View image capture
+- Display of captured images
+- Customizable capture settings
 
 ## Getting started
 
-Para comenzar a usar este paquete, asegúrate de tener una clave de API de Google Maps habilitada para el servicio de Street View.
+To start using this package, make sure you have a Google Maps API key enabled for the Street View service.
+
+### Requirements
+
+#### Android
+- Minimum SDK: 20
+- Required permissions in AndroidManifest.xml:
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+```
+- API key in AndroidManifest.xml:
+```xml
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="API_KEY"/>
+```
+
+#### iOS
+- Minimum version: 14.0
+- Configure API key in AppDelegate.swift:
+```swift
+GMSServices.provideAPIKey("API_KEY")
+```
+
+### API Configuration
+1. Get an API key at https://cloud.google.com/maps-platform/
+2. Enable Google Maps SDK:
+   - Maps SDK for Android
+   - Maps SDK for iOS
+   - Street View Static API
 
 ## Usage
 
-Aquí tienes un ejemplo de cómo usar los widgets `StreetViewCapture` y `StreetViewPreview`:
+Here's an example of how to use the `StreetViewCapture` and `StreetViewPreview` widgets:
 
 ```dart
 import 'package:flutter/material.dart';
@@ -51,7 +90,7 @@ class _StreetViewExampleState extends State<StreetViewExample> {
       children: [
         StreetViewCapture(
           initialPosition: LatLng(37.7749, -122.4194), // San Francisco
-          config: StreetViewConfig(apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'),
+          config: StreetViewConfig(apiKey: 'API_KEY'),
           onImageCaptured: (imageUrl, position) {
             setState(() {
               _imageUrl = imageUrl;
@@ -71,4 +110,4 @@ class _StreetViewExampleState extends State<StreetViewExample> {
 
 ## Additional information
 
-Para más información sobre cómo contribuir al paquete o reportar problemas, visita el repositorio del proyecto.
+For more information about contributing to the package or reporting issues, visit the project repository.
