@@ -1,0 +1,25 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "flutter_screenshot_google_street_view",
+			"request": "launch",
+			"type": "dart",
+			"program": "example/example.dart"
+		},
+		{
+			"name": "flutter_screenshot_google_street_view (profile mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile",
+			"program": "example/example.dart"
+		},
+		{
+			"name": "flutter_screenshot_google_street_view (release mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "release",
+			"program": "example/example.dart"
+		}
+	]
+}
