@@ -2,22 +2,22 @@
 
 ## [0.0.2] - 2024-12-31
 ### Changed
-- Actualizado requisito mínimo de iOS a 14.0 para compatibilidad con google_maps_flutter_ios
-- Agregada configuración de API key para Android y iOS
-- Documentación actualizada con instrucciones de configuración para ambas plataformas
-- Agregados permisos requeridos para Android (INTERNET, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
+- Updated minimum iOS requirement to 14.0 for compatibility with google_maps_flutter_ios
+- Added API key configuration for Android and iOS
+- Updated documentation with setup instructions for both platforms
+- Added required permissions for Android (INTERNET, ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
 
 ## [0.0.1] - 2024-10-10
 ### Added
-- Implementación inicial del paquete `flutter_screenshot_google_street_view`.
-- Añadidos los widgets `StreetViewCapture` y `StreetViewPreview` para capturar y mostrar imágenes de Google Street View.
-- Creación de la clase `StreetViewConfig` para configurar la captura de imágenes de Street View.
-- Ejemplo de uso añadido al `README.md`.
-- Pruebas unitarias para verificar la funcionalidad de los widgets y la generación de URLs de imagen.
+- Initial implementation of `flutter_screenshot_google_street_view` package
+- Added `StreetViewCapture` and `StreetViewPreview` widgets for capturing and displaying Google Street View images
+- Created `StreetViewConfig` class for configuring Street View image capture
+- Added usage example to `README.md`
+- Unit tests to verify widget functionality and image URL generation
 
 ### Fixed
-- Resolución de conflictos de dependencias entre `google_maps_flutter` y `flutter_google_street_view`.
-- Corrección de conflictos de tipos entre las definiciones de `LatLng`.
+- Resolved dependency conflicts between `google_maps_flutter` and `flutter_google_street_view`
+- Fixed type conflicts between `LatLng` definitions
 
 ### Changed
-- Ajustes en el archivo `pubspec.yaml` para incluir las dependencias necesarias para las pruebas.
+- Adjusted `pubspec.yaml` to include necessary testing dependencies
